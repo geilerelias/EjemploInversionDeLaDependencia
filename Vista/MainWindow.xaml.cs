@@ -8,8 +8,8 @@ using System.IO;
 using ExcelDataReader;
 using System.Data;
 using System.Collections;
-using EjemploInversionDeLaDependencia.Dominio;
-using EjemploInversionDeLaDependencia.Datos;
+using Vista.Datos;
+using Vista.Dominio;
 
 namespace EjemploInversionDeLaDependencia
 {

@@ -1,0 +1,176 @@
+﻿<Window x:Class="EjemploInversionDeLaDependencia.UpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EjemploInversionDeLaDependencia"
+        mc:Ignorable="d"
+        Title="UpdateWindow" Height="768" Width="1366"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <DockPanel>
+        <Menu IsMainMenu="True" DockPanel.Dock="Top" >
+            <MenuItem Header="_File">
+                <MenuItem Header="Save">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContentSave" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Save As.." />
+                <MenuItem Header="Exit" InputGestureText="Ctrl+E">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ExitToApp" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Excellent" IsCheckable="True" IsChecked="True" />
+                <MenuItem Header="Rubbish" IsCheckable="True" />
+                <MenuItem Header="Dig Deeper" InputGestureText="Ctrl+D">
+                    <MenuItem Header="Enlightenment?" IsCheckable="True" />
+                    <MenuItem Header="Disappointment" IsCheckable="True" />
+                </MenuItem>
+                <MenuItem Header="Look Deeper" InputGestureText="Ctrl+D">
+                    <MenuItem Header="Plain" />
+                    <MenuItem Header="Ice Cream" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Cut" Command="Cut">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContentCut" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Copy" Command="Copy">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContentCopy" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Paste"  Command="Paste">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ContentPaste" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                <Button ToolTip="Save" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="ContentSave" />
+                </Button>
+                <Separator />
+                <Button Command="Cut" ToolTip="Cut" ToolBar.OverflowMode="AsNeeded">
+                    <materialDesign:PackIcon Kind="ContentCut" />
+                </Button>
+                <Button Command="Copy" ToolTip="Copy that stuff" ToolBar.OverflowMode="AsNeeded">
+                    <materialDesign:PackIcon Kind="ContentCopy" />
+                </Button>
+                <Separator />
+                <Button Command="Paste" ToolTip="Paste some stuff" ToolBar.OverflowMode="AsNeeded">
+                    <materialDesign:PackIcon Kind="ContentPaste" />
+                </Button>
+
+            </ToolBar>
+        </ToolBarTray>
+        <Grid>
+
+            <Grid Grid.Row="0">
+
+                <Grid Grid.Row="1" Margin="20">
+                    <GroupBox Header="Actualización de Estudiantes" 
+                      Style="{DynamicResource MaterialDesignCardGroupBox}"
+                      Margin="20 0" 
+                      materialDesign:ShadowAssist.ShadowDepth="Depth3" 
+                      BorderThickness="0" Grid.RowSpan="2">
+                        <GroupBox.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                      Kind="AccountPlus"
+                                      Height="48"
+                                      Width="48"
+                                      VerticalAlignment="Center" />
+                                    <TextBlock
+                                      Margin="20,0,0,0"
+                                      VerticalAlignment="Center"
+                                       
+                                      Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                      Text="{Binding}" Height="31" FontSize="20" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GroupBox.HeaderTemplate>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40*"  />
+                                <RowDefinition Height="40*"/>
+                                <RowDefinition Height="74*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="0">
+                                <TextBox x:Name="TextBoxIdentificacion"
+                                  materialDesign:HintAssist.Hint="Identificación"
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                  VerticalAlignment="Center"  Margin="10" />
+                            </Grid>
+                            <Grid Grid.Column="1" Grid.Row="0">
+                                <TextBox x:Name="TextBoxNombre"
+                                  materialDesign:HintAssist.Hint="Nombres"
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                  VerticalAlignment="Center" Margin="10" />
+                            </Grid>
+                            <Grid Grid.Column="2" Grid.Row="0">
+                                <TextBox x:Name="TextBoxApellido"
+                                  materialDesign:HintAssist.Hint="Apellidos"
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                  VerticalAlignment="Center" Margin="10" />
+                            </Grid>
+                            <Grid Grid.Column="0" Grid.Row="1">
+                                <ComboBox x:Name="ComboBoxPrograma"
+                                  materialDesign:HintAssist.Hint="Programa"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10">
+                                    <ComboBoxItem>
+                                        Ingeniería de Sistemas
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Ingeniería de Ambiental
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Ingeniería de Electronica
+                                    </ComboBoxItem>
+
+                                </ComboBox>
+                            </Grid>
+                            <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+                                <TextBox x:Name="TextBoxEmail"
+                                  materialDesign:HintAssist.Hint="Email"
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                  VerticalAlignment="Center" Margin="10" />
+                            </Grid>
+
+                            <Grid  Grid.Row="2" Grid.ColumnSpan="3">
+                                <Button x:Name="ButtonActualizar" 
+                                    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                                    ToolTip="Resource name: MaterialDesignRaisedButton" 
+                                    Height="50" Width="400">
+                                    
+                                    Actualizar
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </DockPanel>
+</Window>
